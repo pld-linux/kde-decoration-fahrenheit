@@ -3,17 +3,18 @@ Summary:	Kwin decoration - %{_decoration}
 Summary(pl):	Dekoracja kwin - %{_decoration}
 Name:		kde-decoration-%{_decoration}
 Version:	0.1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Themes
 Source0:	http://www.kde-look.org/content/files/2108-%{_decoration}-%{version}.tar.bz2
 # Source0-md5:	4e8651c81098e2b0941076a58f920411
-URL:		http://www.kde-look.org/content/show.php?content=2108	
+URL:		http://www.kde-look.org/content/show.php?content=2108
 BuildRequires:	autoconf
-BuildRequires:	freetype-devel
-BuildRequires:	qt-devel >= 3.0.5
 BuildRequires:	unsermake
-Requires:	kdelibs
+BuildRequires:	automake
+BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	kdebase-desktop-libs >= 9:3.2.0
+Requires:	kdebase-desktop-libs >= 9:3.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,10 +31,10 @@ pomys³ami zrealizowanymi w WinXP czy MacOsX.
 %build
 kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 kde_icondir="%{_iconsdir}"; export kde_icondir
-cp -f /usr/share/automake/config.sub admin
+cp -f %{_datadir}/automake/config.sub admin
 sed -i -e "s,\$(TOPSUBDIRS),client," Makefile.am
 
-export UNSERMAKE=/usr/share/unsermake/unsermake
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f Makefile.cvs
 
 %configure
