@@ -8,6 +8,7 @@ License:	GPL
 Group:		Themes
 Source0:	http://www.kde-look.org/content/files/2108-%{_decoration}-%{version}.tar.bz2
 # Source0-md5:	4e8651c81098e2b0941076a58f920411
+Patch0:		%{_decoration}-unsermake.patch
 URL:		http://www.kde-look.org/content/show.php?content=2108
 BuildRequires:	autoconf
 BuildRequires:	unsermake
@@ -27,25 +28,23 @@ pomys³ami zrealizowanymi w WinXP czy MacOsX.
 
 %prep
 %setup -q -n %{_decoration}-%{version}
+%patch0 -p1
 
 %build
-kde_htmldir="%{_kdedocdir}"; export kde_htmldir
-kde_icondir="%{_iconsdir}"; export kde_icondir
 cp -f %{_datadir}/automake/config.sub admin
-sed -i -e "s,\$(TOPSUBDIRS),client," Makefile.am
-
 export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f Makefile.cvs
 
-%configure
+%configure \
+	--with-qt-libraries=%{_libdir}
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir="%{_kdedocdir}"
 %clean
 rm -rf $RPM_BUILD_ROOT
 
