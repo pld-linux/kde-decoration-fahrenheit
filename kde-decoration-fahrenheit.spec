@@ -10,19 +10,19 @@ Source0:	http://www.kde-look.org/content/files/2108-%{_decoration}-%{version}.ta
 # Source0-md5:	d6b2d3bef51a912aef495e105c09c4e9
 URL:		http://www.kde-look.org/content/show.php?content=2108	
 BuildRequires:	autoconf
-BuildRequires:	unsermake
 BuildRequires:	freetype-devel
 BuildRequires:	qt-devel >= 3.0.5
+BuildRequires:	unsermake
 Requires:	kdelibs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-%{_decoration} is an innovative kwin decoration which does not 
-follow the old and overused ideas of winXP or MacOsX.
+fahrenheit is an innovative kwin decoration which does not follow the
+old and overused ideas of WinXP or MacOsX.
 
 %description -l pl
-%{_decoration} to innowacyjna dekoracja kwin, która nie pod±¿a 
-za pomys³ami zrealizowanymi w winXP czy MacOsX
+fahrenheit to innowacyjna dekoracja kwin, która nie pod±¿a za
+pomys³ami zrealizowanymi w WinXP czy MacOsX.
 
 %prep
 %setup -q -n %{_decoration}-%{version}
@@ -30,7 +30,7 @@ za pomys³ami zrealizowanymi w winXP czy MacOsX
 %build
 kde_htmldir="%{_kdedocdir}"; export kde_htmldir
 kde_icondir="%{_iconsdir}"; export kde_icondir
-cp /usr/share/automake/config.sub admin
+cp -f /usr/share/automake/config.sub admin
 sed -i -e "s,\$(TOPSUBDIRS),client," Makefile.am
 
 export UNSERMAKE=/usr/share/unsermake/unsermake
@@ -41,7 +41,9 @@ export UNSERMAKE=/usr/share/unsermake/unsermake
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
