@@ -1,0 +1,8 @@
+--- fahrenheit-0.1/Makefile.am~	2003-12-17 05:07:46.000000000 +0100
++++ fahrenheit-0.1/Makefile.am	2004-05-24 22:22:52.726582592 +0200
+@@ -1,4 +1,4 @@
+-SUBDIRS = $(TOPSUBDIRS)
++SUBDIRS = client
+ 
+ MAINTAINERCLEANFILES = subdirs configure.in acinclude.m4 configure.files
+ 
