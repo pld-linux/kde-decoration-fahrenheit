@@ -7,7 +7,7 @@ Release:	1
 License:	GPL
 Group:		Themes
 Source0:	http://www.kde-look.org/content/files/2108-%{_decoration}-%{version}.tar.bz2
-# Source0-md5:	d6b2d3bef51a912aef495e105c09c4e9
+# Source0-md5:	4e8651c81098e2b0941076a58f920411
 URL:		http://www.kde-look.org/content/show.php?content=2108	
 BuildRequires:	autoconf
 BuildRequires:	freetype-devel
