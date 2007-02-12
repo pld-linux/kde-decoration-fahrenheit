@@ -1,6 +1,6 @@
 %define		_decoration 	fahrenheit
 Summary:	Kwin decoration - %{_decoration}
-Summary(pl):	Dekoracja kwin - %{_decoration}
+Summary(pl.UTF-8):   Dekoracja kwin - %{_decoration}
 Name:		kde-decoration-%{_decoration}
 Version:	0.1
 Release:	2
@@ -23,9 +23,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 fahrenheit is an innovative kwin decoration which does not follow the
 old and overused ideas of WinXP or MacOsX.
 
-%description -l pl
-fahrenheit to innowacyjna dekoracja kwin, która nie pod±¿a za
-pomys³ami zrealizowanymi w WinXP czy MacOsX.
+%description -l pl.UTF-8
+fahrenheit to innowacyjna dekoracja kwin, ktÃ³ra nie podÄ…Å¼a za
+pomysÅ‚ami zrealizowanymi w WinXP czy MacOsX.
 
 %prep
 %setup -q -n %{_decoration}-%{version}
